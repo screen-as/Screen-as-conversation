@@ -1,0 +1,72 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>screen as: conversation</title>
+	<style type="text/css">
+        
+		body {background-color: black; color: white; font-family: "Neue Haas", sans-serif; }
+        h1 {color: white}
+		h1, h2, h3 { margin-top:24px; margin-left:24px}
+        h3 {font-weight: 500; font-size: 15px; line-height: 24px}
+        form {column-width: auto; padding-left: 550px;}
+		form > input {display: inline-block;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: left; }
+		#results {float: left; margin:0px; max-width: 20px; padding:0px; border:0px solid; background:RGB(255); }}
+	</style>
+    
+</head>
+<body>
+    
+	<h1>screen as: conversation</h1>
+    <br>
+	<h3>Create your own dialogue between this screen and another.<br>Point another screen with a running camera to this screen.<br>Press "take screenshot" to capture stills.</h3><br><br>
+	
+	<div id="my_camera"></div>
+	
+	<!-- First, include the Webcam.js JavaScript Library -->
+	<script type="text/javascript" src="../webcam.min.js"></script>
+	
+	<!-- Configure a few settings and attach camera -->
+	<script language="JavaScript">
+		Webcam.set({
+			width: 1280,
+			height: 720,
+			image_format: 'jpeg',
+			jpeg_quality: 95,
+			constraints: {
+				width: { exact: 1000 },
+				height: { exact: 526.5 }
+			}
+		});
+		Webcam.attach( '#my_camera' );
+	</script>
+	<br>
+    <!-- A button for taking snaps -->
+    <form>
+        <input type=button value="take screenshot" onClick="take_snapshot()">
+    </form>
+    
+    <br><br>
+    
+	<!-- Code to handle taking the snapshot and displaying it locally -->
+    <script language="JavaScript">
+		function take_snapshot() {
+			// take snapshot and get image data
+			Webcam.snap( function(data_uri) {
+				// display results in page
+				document.getElementById('results').innerHTML = 
+					'<h1>gallery</h1>' + 
+					'<img src="'+data_uri+'"/>'+'<img src="'+data_uri+'"/>';
+			} );
+		}
+	</script>
+
+
+	<div id="results"></div> 
+    
+</body>
+</html>
