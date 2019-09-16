@@ -6,12 +6,13 @@
 	<title>screen as: conversation</title>
 	<style type="text/css">
         
-		body {background-color: blue; color: white; font-family: "Neue Haas", sans-serif; }
+	body {background-color: blue; color: white; font-family: "Neue Haas", sans-serif; }
         h1 {color: white}
-		h1, h2, h3 { margin-top:24px; margin-left:24px}
+	h1, h2, h3 { margin-top:24px; margin-left:24px}
         h3 {font-weight: 500; font-size: 15px; line-height: 24px}
+	border {10px; colour: black}
         form {column-width: auto; padding-left: 550px;}
-		form > input {display: inline-block;
+	form > input {display: inline-block;
         margin-left: auto;
         margin-right: auto;
         text-align: left; }
@@ -32,12 +33,13 @@
 	<!-- Configure a few settings and attach camera -->
 	<script language="JavaScript">
 		Webcam.set({
+			border: 10px,
 			width: 1280,
 			height: 720,
 			image_format: 'jpeg',
 			jpeg_quality: 95,
 			constraints: {
-				width: { exact: 1000 },
+				width: { exact: 950 },
 				height: { exact: 526.5 }
 			}
 		});
