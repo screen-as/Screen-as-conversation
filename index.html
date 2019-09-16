@@ -10,60 +10,79 @@
         h1 {color: white}
 	h1, h2, h3 { margin-top:24px; margin-left:24px}
         h3 {font-weight: 500; font-size: 15px; line-height: 24px}
-	border {10px; colour: black}
-        form {column-width: auto; padding-left: 550px;}
-	form > input {display: inline-block;
+    form {column-width: auto; position: relative; display: block; }
+	form > input {display: block;
         margin-left: auto;
+        position: relative;
         margin-right: auto;
-        text-align: left; }
-		#results {float: left; margin:0px; max-width: 20px; padding:0px; border:0px solid; background:RGB(255); }}
+        text-align: left;
+        background-color: blue;
+        border: 1px solid;
+        border-radius: 10px;
+        color: white}
+		#results {float: left; margin:24px; padding:0px; width: auto}}
+        div.gallery {
+            margin: 0px;
+            float: left;
+            width: 180px;
+              border: 1px solid #ccc;
+        }
+        div.gallery img {
+            width: 45%;
+            height: auto;
+            border: 5px solid;
+            background: RGB(255);
+        }
 	</style>
 </head>
 
 <body>    
 	<h1>screen as: conversation</h1>
     	<br>
-	<h3>Create your own dialogue between this screen and another.<br>Point another screen with a running camera to this screen.<br>Press "take screenshot" to capture stills.</h3><br><br>
-	
+	<h3>Create your own dialogue between this screen and another.
+	<br>Point another screen with a running camera to this screen.<br>Press "take screenshot" to capture stills.</h3><br><br>
 	<div id="my_camera"></div>
 	
 	<!-- First, include the Webcam.js JavaScript Library -->
-	<script type="text/javascript" src="webcam.min.js"></script>
+	<script type="text/javascript" src="../webcam.min.js"></script>
 	
 	<!-- Configure a few settings and attach camera -->
 	<script language="JavaScript">
 		Webcam.set({
-			border: 10px,
 			width: 1280,
 			height: 720,
 			image_format: 'jpeg',
 			jpeg_quality: 95,
 			constraints: {
-				width: { exact: 950 },
-				height: { exact: 526.5 }
+				width: { exact: 1280 },
+				height: { exact: 720 }
 			}
 		});
 		Webcam.attach( '#my_camera' );
 	</script>
-	<br>
     <!-- A button for taking snaps -->
+    <br>
     <form>
         <input type=button value="take screenshot" onClick="take_snapshot()">
     </form>
     <br><br> 
 	<!-- Code to handle taking the snapshot and displaying it locally -->
+    <h1>gallery</h1>
     <script language="JavaScript">
 		function take_snapshot() {
 			// take snapshot and get image data
 			Webcam.snap( function(data_uri) {
 				// display results in page
 				document.getElementById('results').innerHTML = 
-					'<h1>gallery</h1>' + 
-					'<img src="'+data_uri+'"/>'+ <width: 100px> +'<img src="'+data_uri+'"/>';
+					'<img src="'+data_uri+'"/>' + '<img src="'+data_uri+'"/>';
 			} );
 		}
 	</script>
-	<div id="results"></div> 
+    <div class="gallery">
+        <div id="results">
+            <img src: id="results">
+        </div>
+    </div>
     
 </body>
 </html>
